@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>marlin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --accent: #631f1f;
+      --border: #cccccc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      background-image: url('https://www.transparenttextures.com/patterns/spider-web.png');
+      background-repeat: repeat;
+      background-size: 300px;
+    }
+
+    .start-screen, .password-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .start-screen button, .password-screen button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .password-screen input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    header img.top-image {
+      max-width: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .nav-buttons button {
+      background-color: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .content-section {
+      display: none;
+      padding: 2rem;
+      margin: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background-color: #fdfdfd;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .lyrics-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .lyrics {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .gif-box {
+      flex: 1;
+      text-align: center;
+    }
+
+    .gif-box img {
+      max-width: 100%;
+      border: 4px double black;
+      margin-bottom: 1rem;
+      background-color: white;
+      padding: 8px;
+      image-rendering: pixelated;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .lyrics-wrapper {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PASSWORD SCREEN -->
+  <div class="password-screen" id="passwordScreen">
+    <h2>Enter Password</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password" />
+    <button onclick="checkPassword()">Enter</button>
+  </div>
+
+  <!-- START SCREEN -->
+  <div class="start-screen hidden" id="startScreen">
+    <h1><span style="color: #631f1f;">to</span> <span style="color: #253161;">you</span>, <span style="color: #631f1f;">ovenmitt</span> <span style="color: #253161;">blanca</span></h1>
+    <button onclick="startSite()">Start</button>
+  </div>
+
+  <header>
+    <img src="1a546758d4a88f2ed56ea2a9afa48f00.gif" class="top-image" alt="Top Image" />
+    <h1><span style="color: #631f1f;">to</span> <span style="color: #253161;">you</span>, <span style="color: #631f1f;">ovenmitt</span> <span style="color: #253161;">blanca</span></h1>
+    <p>from your friendly neighborhood tori 🕷</p>
+  </header>
+
+  <div class="nav-buttons">
+    <button onclick="showSection('intro')">2 auvimich</button>
+    <button onclick="showSection('feelings')">from</button>
+    <button onclick="showSection('final')">toriyaki</button>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="intro" class="content-section active">
+    <div class="lyrics-wrapper">
+      <div class="lyrics">
+        <p>
+          Dahil nga<br>Sa pagbabanda<br>Nakilala ka<br>Salamat nga sa musika<br>Natagpuan kita bigla<br>
+          Hawak mo<br>Pulang gitara sa studio ko<br>At narinig kang kumanta<br>Nabighani nga bigla<br>
+          Gagawa ako ng kanta<br>Na ikaw ang pamagat<br>Mga letra'y di pa handa<br>Tono ang nauna<br>
+          Ikaw ang hinihintay ko<br>Handang magpakatotoo<br>Binubuksan ang pinto<br>Akala ko noon<br>Hindi ko na kaya<br><br>
+          Nagsimula<br>Nung naalala ka sa Shibuya<br>Sinabi kong bagay ka do'n<br>Istilo mo ay pang Hapon<br>
+          Ang sabi mo<br>"Pangarap ko ang makapunta diyan<br>Magbakasyon diyan sa Japan<br>Ang swerte swerte mo naman."<br><br>
+          Aaminin ko sa'yo<br>Na aishteru, oh<br>Ikaw ang hinihintay ko<br>Handang magpakatotoo<br>
+          Binubuksan ang pinto<br>Handang magmahal nang buo<br>Akala ko noon<br>Hindi ko na kaya<br><br>
+          Sa bagong panahon<br>Ikaw na ang kasama<br>Dahil nga<br>Sa pagbabanda<br>Nakilala ka<br>
+          Salamat nga sa musika<br>Natagpuan kita bigla
+        </p>
+      </div>
+      <div class="gif-box">
+        <img src="gwen n miles.gif" alt="Main GIF">
+        <img src="gwen n miles 2.gif" alt="Extra GIF">
+      </div>
+    </div>
+    <audio id="audio-intro" loop src="lia zild.mp3"></audio>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="feelings" class="content-section">
+    <div class="lyrics-wrapper">
+      <div class="lyrics">
+        <p>
+          … Catch the rain<br>Even on a sunny day<br>I swear I'm not excusing, I'll cross my heart to prove it<br>
+          But she seems tired 'cause we've been through this<br>… And I know you said that we're not a thing<br>
+          But you're here, that's the thing<br>And I'm not trying to give you a ring<br>
+          Well, maybe on the phone if you let it sing<br>You're overcomplicating everything<br><br>
+          … When the lights go down, don't say I didn't warn ya<br>
+          I don't think that's legal in the state of California<br><br>
+          … I've got you wrapped around my finger like a piece of ribbon<br>
+          You just won't admit it that you're smitten<br>
+          Hold on a minute, plеase, won't you listen?<br>
+          'Cause I'm not surе if you're into me like I'm into you<br><br>
+          … I said a lot of stupid things in the winter<br>
+          Once the ice got thinner<br>But somehow, we managed through the fall<br>
+          So I guess it's not that bad at all<br><br>
+          … That we're not a thing<br>But you're here, that's the thing<br>
+          And I'm not trying to give you a ring<br>
+          Well, maybe on the phone if you let it sing<br>
+          You're overcomplicating everything<br><br>
+          … I'm going away<br>Did I forget to mention how long I'd stay?<br>
+          Is that a question for another day?<br>But while we're away<br><br>
+          … And I know you said that we're not a thing<br>
+          But you're here, that's the thing<br>
+          And I'm not trying to give you a ring<br>
+          Well, maybe on the phone if you let it sing<br>
+          You're overcomplicating everything<br><br>
+          … When the lights go down, don't say I didn't warn ya<br>
+          I don't think that's legal in the state of California
+        </p>
+      </div>
+      <div class="gif-box">
+        <img src="mitsuaya.gif" alt="Mitsuya GIF">
+        <img src="tdg.gif" alt="TDG GIF">
+      </div>
+    </div>
+    <audio id="audio-feelings" loop src="Youre here thats the thing.mp3"></audio>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="final" class="content-section">
+    <h2 style="text-align:center;">如果我告诉你我喜欢你，你会觉得不舒服吗？我不想失去我们的友情，但米洛叫我告诉你，因为她说我永远不会知道你真正的感受，除非我坦白……我真的希望这不会让我们变得尴尬，对不起</h2>
+    <audio id="audio-final" loop src="heavy.mp3"></audio>
+  </section>
+
+  <footer>i'd be there for you everyday, if you let me</footer>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('passwordInput').value;
+      if (input === "batmanvssuperman") {
+        document.getElementById('passwordScreen').classList.add('hidden');
+        document.getElementById('startScreen').classList.remove('hidden');
+      } else {
+        alert("Wrong password. Try again.");
+      }
+    }
+
+    function startSite() {
+      document.getElementById('startScreen').classList.add('hidden');
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+        const audio = section.querySelector('audio');
+        if (audio) {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      });
+
+      const selected = document.getElementById(id);
+      selected.classList.add('active');
+      const audio = selected.querySelector('audio');
+      if (audio) audio.play();
+    }
+  </script>
+</body>
+</html>
